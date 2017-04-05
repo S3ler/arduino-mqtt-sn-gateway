@@ -1,5 +1,5 @@
-brokeraddress 192.168.178.33
-brokerport 1884
+brokeraddress 127.0.0.1
+brokerport 1883
 clientid mqtt-sn linux gateway
 willtopic /mqtt/sn/gateway
 willmessage /mqtt-sn linux gateway offline
