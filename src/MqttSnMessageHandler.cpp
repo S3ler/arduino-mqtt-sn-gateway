@@ -272,9 +272,11 @@ void MqttSnMessageHandler::handle_register(device_address *address, uint16_t msg
     CORE_RESULT register_result = core->register_topic(address, topic_name, p_topic_id);
     if (register_result == FULL) {
         send_regack(address, 0x0000, msg_id, REJECTED_CONGESTION);
+        return;
     }
     if (register_result != SUCCESS) {
         send_regack(address, 0x0000, msg_id, REJECTED_NOT_SUPPORTED);
+        return;
     }
     send_regack(address, topic_id, msg_id, ACCEPTED);
 }

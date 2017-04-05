@@ -262,15 +262,25 @@ public:
         _open_file.close();
         bool error = _error;
         bool transaction_started = _transaction_started;
+        bool not_in_client_registry = _not_in_client_registry;
         _error = false;
         _transaction_started = false;
+        _not_in_client_registry = false;
+
 
         if (transaction_started) {
+
             if (error) {
 #if PERSISTENT_DEBUG
                 logger->log("apply transaction - error", 1);
 #endif
                 return 0;
+            }
+            if(not_in_client_registry){
+#if PERSISTENT_DEBUG
+                logger->log("apply transaction - not in client registry", 1);
+#endif
+                return -1;
             }
 #if PERSISTENT_DEBUG
             logger->log("apply transaction - success ", 3);

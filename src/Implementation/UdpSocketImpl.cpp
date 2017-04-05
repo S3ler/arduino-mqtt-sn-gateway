@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <fstream>
 #include "UdpSocketImpl.h"
 
 
@@ -184,19 +185,18 @@ bool UdpSocketImpl::loop() {
     }
     //listening for data for 300 ms
     //printf("Waiting for data...");
-    //fflush(stdout);
     memset(&buf, 0, BUFLEN);
-    //try to receive some data, this is a blocking call
     if ((recv_len = recvfrom(s, buf, BUFLEN, 0, (struct sockaddr *) &si_other, &slen)) != -1) {
         // print details of the client/peer and the data received
         // printf("Received packet from %s:%d\n", inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port));
         // printf("Data: %s\n" , buf);
         if (recv_len <= UINT8_MAX) {
+
+
             device_address client_address = getDevice_address(&si_other);
             mqttsn->receiveData(&client_address, (uint8_t *) &buf);
         }
     }
-    /* Timeout */
     return s >= 0;
 }
 

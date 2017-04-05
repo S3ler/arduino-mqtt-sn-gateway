@@ -46,7 +46,7 @@ void setup() {
 
 int main(int argc, char* argv[]) {
     std::string workingDir = getexepath() + "/../DB";
-    workingDir = "/home/bele/git/MQTT-SN_nRF24L01/ESPLinuxGatewayPort/cmake-build-debug/DB";
+    workingDir = "/home/bele/git/arduino-mqtt-sn-gateway/cmake-build-debug/DB";
     persistent.setRootPath((char *) workingDir.c_str());
     setup();
     while(true){
