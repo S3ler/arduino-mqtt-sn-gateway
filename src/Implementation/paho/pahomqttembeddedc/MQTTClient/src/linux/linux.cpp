@@ -48,7 +48,7 @@ public:
 		//{
 			if (strcmp(aString, "shutdown") != 0 || (errno != ENOTCONN && errno != ECONNRESET))
 			{
-				printf("Socket error %s in %s for socket %d\n", strerror(errno), aString, mysock);
+				// printf("Socket error %s in %s for socket %d\n", strerror(errno), aString, mysock);
 				rc = errno;
 			}
 		//}
