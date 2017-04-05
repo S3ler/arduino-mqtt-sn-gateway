@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
-project(ESPLinuxGatewayPort)
+project(arduino-mqtt-sn-gateway)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -60,4 +60,4 @@ file(GLOB PAHO_SOURCE_FILES
         )
 
 set(SOURCE_FILES src/main.cpp ${GLOBAL_SOURCES} ${INTERFACE_FILES} ${PAHO_SOURCE_FILES})
-add_executable(ESPLinuxGatewayPort ${SOURCE_FILES})
+add_executable(arduino-mqtt-sn-gateway ${SOURCE_FILES})
